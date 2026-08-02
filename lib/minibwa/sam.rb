@@ -50,12 +50,12 @@ module Minibwa
     # Returns a SAM line String (without trailing newline).
     def format(qname, flag, hit, seq, qual = '*', mate: nil)
       rnext, pnext = if mate
-        # '=' means the mate is on the same reference sequence.
-        mate_ref = mate.ctg == hit.ctg && hit.ctg ? '=' : mate.ctg || '*'
-        [mate_ref, mate.ts + 1]
-      else
-        ['*', 0]
-      end
+                       # '=' means the mate is on the same reference sequence.
+                       mate_ref = mate.ctg == hit.ctg && hit.ctg ? '=' : mate.ctg || '*'
+                       [mate_ref, mate.ts + 1]
+                     else
+                       ['*', 0]
+                     end
 
       # For reverse-strand alignments the SEQ field should be the reverse
       # complement of the original query (SAM spec).  Callers must pass the
