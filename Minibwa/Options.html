@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Minibwa::Options
+  
+    &mdash; Documentation by YARD 0.9.45
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css">
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css">
+
+<script type="text/javascript">
+  pathId = "Minibwa::Options";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="main_progress" aria-hidden="true"></div>
+
+    <div class="nav_wrap">
+      <iframe id="nav" src="../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../_index.html">Index (O)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Minibwa.html" title="Minibwa (module)">Minibwa</a></span></span>
+     &raquo; 
+    <span class="title">Options</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Minibwa::Options
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Minibwa::Options</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/minibwa/options.rb<span class="defines">,<br>
+  ext/minibwa/mb_options.c</span>
+
+</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Alignment parameters, a Ruby view of mb_opt_t.</p>
+<p>The class and all of its field accessors come from mb_options.c; this file
+reopens it for what reads better in Ruby -- keyword initialization,
+#to_h and #inspect, and rejecting an unknown preset name before it reaches
+mb_opt_preset().</p>
+<p>Presets are &quot;sr&quot;, &quot;adap&quot; and &quot;lr&quot;. Note that mb_opt_init() applies &quot;adap&quot;,
+so a fresh Options is paired-end and adaptive by default.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="PRESETS-constant" class="">PRESETS =
+          
+        </dt>
+        <dd><pre class="code"><span class='qwords_beg'>%w[</span><span class='tstring_content'>sr</span><span class='words_sep'> </span><span class='tstring_content'>adap</span><span class='words_sep'> </span><span class='tstring_content'>lr</span><span class='tstring_end'>]</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#new (instance method)">#<strong>new</strong>(**kwargs)  &#x21d2; Options </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns a new Options initialised with mb_opt_init() (adaptive paired-end defaults).</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#inspect-instance_method" title="#inspect (instance method)">#<strong>inspect</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#preset-instance_method" title="#preset (instance method)">#<strong>preset</strong>(name)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Applies a named preset with validation.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#preset!-instance_method" title="#preset (instance method)">#<strong>preset</strong>(name)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Applies a named preset.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_h-instance_method" title="#to_h (instance method)">#<strong>to_h</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns all field values as a Hash.</p></div></span>
+  
+</li>
+
+      
+    </ul>
+    
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>new</strong>(**kwargs)  &#x21d2; <tt><span class='object_link'><a href="" title="Minibwa::Options (class)">Options</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns a new Options initialised with mb_opt_init() (adaptive paired-end
+defaults).  Pass keyword arguments to override individual fields, e.g.</p>
+<pre class="code"><code class=""><span class='const'><span class='object_link'><a href="" title="Minibwa::Options (class)">Options</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>bw:</span> <span class='int'>500</span><span class='comma'>,</span> <span class='label'>min_len:</span> <span class='int'>19</span><span class='rparen'>)</span></code></pre>
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'ext/minibwa/mb_options.c', line 177</span>
+
+static VALUE
+mb_opt_initialize(int argc, VALUE *argv, VALUE self)
+{
+    VALUE kwargs;
+    rb_scan_args(argc, argv, &quot;:&quot;, &amp;kwargs);
+
+    if (!NIL_P(kwargs)) {
+        static ID id_keyword_new;
+        if (!id_keyword_new)
+            id_keyword_new = rb_intern(&quot;__keyword_new__&quot;);
+        /* Delegate to Ruby-side keyword handling in lib/minibwa/options.rb */
+        rb_funcall(self, id_keyword_new, 1, kwargs);
+    }
+    return Qnil;
+}</pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="inspect-instance_method">
+  
+    #<strong>inspect</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+48
+49
+50</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/minibwa/options.rb', line 48</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_to_h'>to_h</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_k'>k</span><span class='embexpr_end'>}</span><span class='tstring_content'>=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>, </span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="preset-instance_method">
+  
+    #<strong>preset</strong>(name)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Applies a named preset with validation.</p>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_opt'>opt</span><span class='period'>.</span><span class='id identifier rubyid_preset'>preset</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>sr</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>   <span class='comment'># =&gt; true
+</span><span class='id identifier rubyid_opt'>opt</span><span class='period'>.</span><span class='id identifier rubyid_preset'>preset</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>bad</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  <span class='comment'># raises ArgumentError</span></code></pre>
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+20
+21
+22
+23
+24
+25
+26</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/minibwa/options.rb', line 20</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_preset'>preset</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='const'><span class='object_link'><a href="#PRESETS-constant" title="Minibwa::Options::PRESETS (constant)">PRESETS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unknown preset: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_content'>, expected one of </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="#PRESETS-constant" title="Minibwa::Options::PRESETS (constant)">PRESETS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_inspect'><span class='object_link'><a href="#inspect-instance_method" title="Minibwa::Options#inspect (method)">inspect</a></span></span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_preset!'>preset!</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="preset!-instance_method">
+  
+    #<strong>preset</strong>(name)  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Applies a named preset.  Returns <code>true</code> on success, <code>false</code> if the preset
+name is unknown.  Known presets: &quot;sr&quot;, &quot;adap&quot;, &quot;lr&quot;.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+200
+201
+202
+203
+204
+205
+206</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'ext/minibwa/mb_options.c', line 200</span>
+
+static VALUE
+rb_minibwa_opt_preset(VALUE self, VALUE name)
+{
+    mb_opt_t *opt = rb_minibwa_get_opt(self);
+    const char *s = StringValueCStr(name);
+    return mb_opt_preset(opt, s) == 0 ? Qtrue : Qfalse;
+}</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_h-instance_method">
+  
+    #<strong>to_h</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns all field values as a Hash.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/minibwa/options.rb', line 29</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_h'>to_h</span>
+  <span class='lbrace'>{</span>
+    <span class='label'>flag:</span> <span class='id identifier rubyid_flag'>flag</span><span class='comma'>,</span> <span class='label'>min_len:</span> <span class='id identifier rubyid_min_len'>min_len</span><span class='comma'>,</span> <span class='label'>max_sub_occ:</span> <span class='id identifier rubyid_max_sub_occ'>max_sub_occ</span><span class='comma'>,</span> <span class='label'>max_occ:</span> <span class='id identifier rubyid_max_occ'>max_occ</span><span class='comma'>,</span>
+    <span class='label'>bw:</span> <span class='id identifier rubyid_bw'>bw</span><span class='comma'>,</span> <span class='label'>bw_long:</span> <span class='id identifier rubyid_bw_long'>bw_long</span><span class='comma'>,</span> <span class='label'>max_gap:</span> <span class='id identifier rubyid_max_gap'>max_gap</span><span class='comma'>,</span> <span class='label'>max_sr_len:</span> <span class='id identifier rubyid_max_sr_len'>max_sr_len</span><span class='comma'>,</span>
+    <span class='label'>max_chain_skip:</span> <span class='id identifier rubyid_max_chain_skip'>max_chain_skip</span><span class='comma'>,</span> <span class='label'>max_chain_iter:</span> <span class='id identifier rubyid_max_chain_iter'>max_chain_iter</span><span class='comma'>,</span>
+    <span class='label'>min_chain_score:</span> <span class='id identifier rubyid_min_chain_score'>min_chain_score</span><span class='comma'>,</span> <span class='label'>chain_gap_scale:</span> <span class='id identifier rubyid_chain_gap_scale'>chain_gap_scale</span><span class='comma'>,</span>
+    <span class='label'>mask_level:</span> <span class='id identifier rubyid_mask_level'>mask_level</span><span class='comma'>,</span> <span class='label'>mask_len:</span> <span class='id identifier rubyid_mask_len'>mask_len</span><span class='comma'>,</span> <span class='label'>pri_ratio:</span> <span class='id identifier rubyid_pri_ratio'>pri_ratio</span><span class='comma'>,</span>
+    <span class='label'>best_n:</span> <span class='id identifier rubyid_best_n'>best_n</span><span class='comma'>,</span> <span class='label'>a:</span> <span class='id identifier rubyid_a'>a</span><span class='comma'>,</span> <span class='label'>b:</span> <span class='id identifier rubyid_b'>b</span><span class='comma'>,</span> <span class='label'>b_ts:</span> <span class='id identifier rubyid_b_ts'>b_ts</span><span class='comma'>,</span> <span class='label'>b_ambi:</span> <span class='id identifier rubyid_b_ambi'>b_ambi</span><span class='comma'>,</span>
+    <span class='label'>q:</span> <span class='id identifier rubyid_q'>q</span><span class='comma'>,</span> <span class='label'>q2:</span> <span class='id identifier rubyid_q2'>q2</span><span class='comma'>,</span> <span class='label'>e:</span> <span class='id identifier rubyid_e'>e</span><span class='comma'>,</span> <span class='label'>e2:</span> <span class='id identifier rubyid_e2'>e2</span><span class='comma'>,</span> <span class='label'>end_bonus:</span> <span class='id identifier rubyid_end_bonus'>end_bonus</span><span class='comma'>,</span>
+    <span class='label'>min_dp_max:</span> <span class='id identifier rubyid_min_dp_max'>min_dp_max</span><span class='comma'>,</span> <span class='label'>zdrop:</span> <span class='id identifier rubyid_zdrop'>zdrop</span><span class='comma'>,</span> <span class='label'>zdrop_inv:</span> <span class='id identifier rubyid_zdrop_inv'>zdrop_inv</span><span class='comma'>,</span>
+    <span class='label'>min_ksw_len:</span> <span class='id identifier rubyid_min_ksw_len'>min_ksw_len</span><span class='comma'>,</span> <span class='label'>max_pe_ins:</span> <span class='id identifier rubyid_max_pe_ins'>max_pe_ins</span><span class='comma'>,</span> <span class='label'>max_rescue:</span> <span class='id identifier rubyid_max_rescue'>max_rescue</span><span class='comma'>,</span>
+    <span class='label'>pen_unpair:</span> <span class='id identifier rubyid_pen_unpair'>pen_unpair</span><span class='comma'>,</span> <span class='label'>pe_avg:</span> <span class='id identifier rubyid_pe_avg'>pe_avg</span><span class='comma'>,</span> <span class='label'>pe_std:</span> <span class='id identifier rubyid_pe_std'>pe_std</span><span class='comma'>,</span>
+    <span class='label'>pe_lo:</span> <span class='id identifier rubyid_pe_lo'>pe_lo</span><span class='comma'>,</span> <span class='label'>pe_hi:</span> <span class='id identifier rubyid_pe_hi'>pe_hi</span><span class='comma'>,</span> <span class='label'>sb_len:</span> <span class='id identifier rubyid_sb_len'>sb_len</span><span class='comma'>,</span> <span class='label'>sb_seq:</span> <span class='id identifier rubyid_sb_seq'>sb_seq</span><span class='comma'>,</span>
+    <span class='label'>n_thread:</span> <span class='id identifier rubyid_n_thread'>n_thread</span><span class='comma'>,</span> <span class='label'>out_n:</span> <span class='id identifier rubyid_out_n'>out_n</span><span class='comma'>,</span> <span class='label'>out_s:</span> <span class='id identifier rubyid_out_s'>out_s</span><span class='comma'>,</span> <span class='label'>seed:</span> <span class='id identifier rubyid_seed'>seed</span><span class='comma'>,</span>
+    <span class='label'>xa_max:</span> <span class='id identifier rubyid_xa_max'>xa_max</span><span class='comma'>,</span> <span class='label'>mb_size:</span> <span class='id identifier rubyid_mb_size'>mb_size</span><span class='comma'>,</span> <span class='label'>max_mb_size:</span> <span class='id identifier rubyid_max_mb_size'>max_mb_size</span><span class='comma'>,</span>
+    <span class='label'>max_sw_mat:</span> <span class='id identifier rubyid_max_sw_mat'>max_sw_mat</span><span class='comma'>,</span> <span class='label'>cap_kalloc:</span> <span class='id identifier rubyid_cap_kalloc'>cap_kalloc</span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Sun Aug  2 02:23:26 2026 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.45 (ruby-4.0.6).
+</div>
+
+    </div>
+  </body>
+</html>

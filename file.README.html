@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.9.45
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+
+  <link rel="stylesheet" href="css/common.css" type="text/css">
+
+<script type="text/javascript">
+  pathId = "README";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="main_progress" aria-hidden="true"></div>
+
+    <div class="nav_wrap">
+      <iframe id="nav" src="file_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'><h1 id="ruby_minibwa">ruby-minibwa</h1>
+<p>Ruby bindings for <a href="https://github.com/lh3/minibwa">minibwa</a>, a short-read
+aligner combining bwa-mem seeding with minimap2 chaining and alignment.</p>
+<h2 id="Installation">Installation</h2>
+<p>Requires a C compiler, zlib, and Ruby &gt;= 3.2.</p>
+<pre class="code sh"><code class="sh">git clone --recursive https://github.com/kojix2/ruby-minibwa
+cd ruby-minibwa
+bundle install
+bundle exec rake compile
+</code></pre>
+<p>The extension builds the vendored minibwa sources, including libsais for
+index construction. Expect the first build to take a few minutes.</p>
+<h2 id="Usage">Usage</h2>
+<p>Build an index:</p>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>minibwa</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='const'><span class='object_link'><a href="Minibwa.html" title="Minibwa (module)">Minibwa</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Minibwa/Index.html" title="Minibwa::Index (class)">Index</a></span></span><span class='period'>.</span><span class='id identifier rubyid_build'><span class='object_link'><a href="Minibwa/Index.html#build-class_method" title="Minibwa::Index.build (method)">build</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ref.fa</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ref</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>n_thread:</span> <span class='int'>4</span><span class='rparen'>)</span>
+</code></pre>
+<p>This writes <code>ref.l2b</code> and <code>ref.mbw</code>. Indexes made by the <code>minibwa index</code>
+command are also usable.</p>
+<p>Map reads:</p>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_opt'>opt</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Minibwa.html" title="Minibwa (module)">Minibwa</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Minibwa/Options.html" title="Minibwa::Options (class)">Options</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Minibwa/Options.html#initialize-instance_method" title="Minibwa::Options#initialize (method)">new</a></span></span>
+<span class='id identifier rubyid_opt'>opt</span><span class='period'>.</span><span class='id identifier rubyid_preset'>preset</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>sr</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  <span class='comment'># or &quot;adap&quot;, &quot;lr&quot;
+</span>
+<span class='id identifier rubyid_idx'>idx</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Minibwa.html" title="Minibwa (module)">Minibwa</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Minibwa/Index.html" title="Minibwa::Index (class)">Index</a></span></span><span class='period'>.</span><span class='id identifier rubyid_load'><span class='object_link'><a href="Minibwa/Index.html#load-class_method" title="Minibwa::Index.load (method)">load</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ref</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+
+<span class='id identifier rubyid_hits'>hits</span> <span class='op'>=</span> <span class='id identifier rubyid_idx'>idx</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ACGT...</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>read1</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>opt:</span> <span class='id identifier rubyid_opt'>opt</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_hits'>hits</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_h'>h</span><span class='op'>|</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='lbracket'>[</span><span class='id identifier rubyid_h'>h</span><span class='period'>.</span><span class='id identifier rubyid_ctg'>ctg</span><span class='comma'>,</span> <span class='id identifier rubyid_h'>h</span><span class='period'>.</span><span class='id identifier rubyid_ts'>ts</span><span class='comma'>,</span> <span class='id identifier rubyid_h'>h</span><span class='period'>.</span><span class='id identifier rubyid_te'>te</span><span class='comma'>,</span> <span class='id identifier rubyid_h'>h</span><span class='period'>.</span><span class='id identifier rubyid_strand'>strand</span><span class='comma'>,</span> <span class='id identifier rubyid_h'>h</span><span class='period'>.</span><span class='id identifier rubyid_qs'>qs</span><span class='comma'>,</span> <span class='id identifier rubyid_h'>h</span><span class='period'>.</span><span class='id identifier rubyid_qe'>qe</span><span class='comma'>,</span> <span class='id identifier rubyid_h'>h</span><span class='period'>.</span><span class='id identifier rubyid_mapq'>mapq</span><span class='comma'>,</span> <span class='id identifier rubyid_h'>h</span><span class='period'>.</span><span class='id identifier rubyid_cigar_str'>cigar_str</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\t</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span>
+</code></pre>
+<p>Map many reads in one call:</p>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_seqs'>seqs</span>  <span class='op'>=</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ACGT...</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>TGCA...</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+<span class='id identifier rubyid_names'>names</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>read1</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>read2</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+<span class='id identifier rubyid_hits'>hits</span>  <span class='op'>=</span> <span class='id identifier rubyid_idx'>idx</span><span class='period'>.</span><span class='id identifier rubyid_map_batch'>map_batch</span><span class='lparen'>(</span><span class='id identifier rubyid_seqs'>seqs</span><span class='comma'>,</span> <span class='label'>names:</span> <span class='id identifier rubyid_names'>names</span><span class='comma'>,</span> <span class='label'>opt:</span> <span class='id identifier rubyid_opt'>opt</span><span class='rparen'>)</span>
+<span class='comment'># =&gt; [[Hit, ...], [Hit, ...]]
+</span></code></pre>
+<p>Use a reusable buffer for repeated mapping:</p>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_buf'>buf</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Minibwa.html" title="Minibwa (module)">Minibwa</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Minibwa/Buffer.html" title="Minibwa::Buffer (class)">Buffer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Minibwa/Buffer.html#initialize-instance_method" title="Minibwa::Buffer#initialize (method)">new</a></span></span>
+<span class='id identifier rubyid_idx'>idx</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='id identifier rubyid_seq'>seq</span><span class='comma'>,</span> <span class='label'>buf:</span> <span class='id identifier rubyid_buf'>buf</span><span class='rparen'>)</span>
+</code></pre>
+<p>Generate SAM output:</p>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_puts'>puts</span> <span class='const'><span class='object_link'><a href="Minibwa.html" title="Minibwa (module)">Minibwa</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Minibwa/Sam.html" title="Minibwa::Sam (module)">Sam</a></span></span><span class='period'>.</span><span class='id identifier rubyid_header'><span class='object_link'><a href="Minibwa/Sam.html#header-class_method" title="Minibwa::Sam.header (method)">header</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_idx'>idx</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_hits'>hits</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_h'>h</span><span class='op'>|</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='const'><span class='object_link'><a href="Minibwa.html" title="Minibwa (module)">Minibwa</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Minibwa/Sam.html" title="Minibwa::Sam (module)">Sam</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="Minibwa/Sam.html#format-class_method" title="Minibwa::Sam.format (method)">format</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>read1</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>0</span><span class='comma'>,</span> <span class='id identifier rubyid_h'>h</span><span class='comma'>,</span> <span class='id identifier rubyid_seq'>seq</span><span class='rparen'>)</span>
+<span class='kw'>end</span>
+</code></pre>
+<p><strong>Note on reverse-strand alignments:</strong> For hits where <code>hit.rev</code> is true,
+the SAM spec requires SEQ to be the reverse complement of the original
+query and the FLAG to have 0x10 set. <code>Sam.format</code> does not do this
+automatically — pass the already-oriented sequence and the correct flag.
+The library does not retain the original query after mapping.</p>
+<p>With <code>pe: true</code>, <code>map_batch</code> treats consecutive sequences as read pairs.</p>
+<h3 id="CIGAR">CIGAR</h3>
+<p><code>Hit#cigar</code> and <code>#cigar_str</code> cover the aligned region only and contain no
+clipping, which is how minibwa reports alignments. <code>#full_cigar_str</code>
+takes the query length and adds soft clips derived from <code>qs</code> and <code>qe</code>.</p>
+<h3 id="Threads">Threads</h3>
+<p><code>Options#n_thread</code> affects only <code>Index.build</code> (via libsais + OpenMP).
+Mapping itself is single-threaded per call, but releases the GVL, so Ruby
+threads run in parallel. To map from several Ruby threads, give each one
+its own buffer:</p>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_buf'>buf</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Minibwa.html" title="Minibwa (module)">Minibwa</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Minibwa/Buffer.html" title="Minibwa::Buffer (class)">Buffer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Minibwa/Buffer.html#initialize-instance_method" title="Minibwa::Buffer#initialize (method)">new</a></span></span>
+<span class='id identifier rubyid_idx'>idx</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='id identifier rubyid_seq'>seq</span><span class='comma'>,</span> <span class='label'>opt:</span> <span class='id identifier rubyid_opt'>opt</span><span class='comma'>,</span> <span class='label'>buf:</span> <span class='id identifier rubyid_buf'>buf</span><span class='rparen'>)</span>
+</code></pre>
+<p>A <code>Buffer</code> holds mutable scratch state and must not be shared between
+threads mapping at the same time.</p>
+<h2 id="Development">Development</h2>
+<pre class="code sh"><code class="sh">bundle exec rake compile
+bundle exec rake test
+</code></pre>
+<p><code>bin/console</code> gives an IRB session with the extension loaded.</p>
+<h2 id="License">License</h2>
+<p>MIT. The vendored minibwa is MIT as well; its GPL-licensed files
+(<code>bwtgen.c</code>, <code>QSufSort.c</code>, providing the low-memory BWT construction
+option) are neither compiled nor distributed. See
+<code>ext/minibwa/minibwa/LICENSE.txt</code>.</p></div></div>
+
+      <div id="footer">
+  Generated on Sun Aug  2 02:23:26 2026 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.45 (ruby-4.0.6).
+</div>
+
+    </div>
+  </body>
+</html>
