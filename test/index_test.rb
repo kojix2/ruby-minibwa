@@ -59,7 +59,11 @@ class IndexTest < Test::Unit::TestCase
       9.times do |i|
         nested = File.join(nested, "segment-#{i}-#{'a' * 110}")
       end
-      FileUtils.mkdir_p(nested)
+      begin
+        FileUtils.mkdir_p(nested)
+      rescue Errno::ENAMETOOLONG
+        omit('filesystem does not support the long path required by this test')
+      end
 
       prefix = File.join(nested, 'ref')
       assert_operator(prefix.bytesize, :>, 1024)
