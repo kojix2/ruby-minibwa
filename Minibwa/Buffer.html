@@ -96,13 +96,29 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>ext/minibwa/mb_buffer.c
+    <dd>ext/minibwa/mb_buffer.c<span class="defines">,<br>
+  ext/minibwa/mb_buffer.c</span>
+
 </dd>
   </dl>
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Minibwa::Buffer -- wraps mb_tbuf_t, the reusable per-thread scratch buffer.</p>
+<p>Passing a Buffer to Index#map saves an mb_tbuf_init/mb_tbuf_destroy pair on
+every call; passing nil lets mb_map() allocate one internally. A Buffer
+carries mutable working state and must never be shared between threads that
+map concurrently -- one Buffer per thread.</p>
+<p>Freed with mb_tbuf_destroy().</p>
 
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -206,8 +222,6 @@ to disable the internal allocator.</p>
       <pre class="lines">
 
 
-50
-51
 52
 53
 54
@@ -228,10 +242,12 @@ to disable the internal allocator.</p>
 69
 70
 71
-72</pre>
+72
+73
+74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'ext/minibwa/mb_buffer.c', line 50</span>
+      <pre class="code"><span class="info file"># File 'ext/minibwa/mb_buffer.c', line 52</span>
 
 static VALUE
 rb_minibwa_buffer_initialize(int argc, VALUE *argv, VALUE self)
@@ -317,17 +333,17 @@ Returns the new capacity.</p>
       <pre class="lines">
 
 
-89
-90
 91
 92
 93
 94
 95
-96</pre>
+96
+97
+98</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'ext/minibwa/mb_buffer.c', line 89</span>
+      <pre class="code"><span class="info file"># File 'ext/minibwa/mb_buffer.c', line 91</span>
 
 static VALUE
 rb_minibwa_buffer_reset(VALUE self, VALUE max_block_size)
@@ -347,7 +363,7 @@ rb_minibwa_buffer_reset(VALUE self, VALUE max_block_size)
 </div>
 
       <div id="footer">
-  Generated on Sun Aug  2 02:32:01 2026 by
+  Generated on Sun Aug  2 02:37:07 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.45 (ruby-4.0.6).
 </div>
