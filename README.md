@@ -3,6 +3,7 @@
 [![Gem Version](https://img.shields.io/gem/v/minibwa?color=brightgreen)](https://rubygems.org/gems/minibwa)
 [![Test](https://github.com/kojix2/ruby-minibwa/actions/workflows/test.yml/badge.svg)](https://github.com/kojix2/ruby-minibwa/actions/workflows/test.yml)
 [![Lines of Code](https://img.shields.io/endpoint?url=https%3A%2F%2Ftokei.kojix2.net%2Fbadge%2Fgithub%2Fkojix2%2Fruby-minibwa%2Flines)](https://tokei.kojix2.net/github/kojix2/ruby-minibwa)
+[![DOI](https://zenodo.org/badge/1319741104.svg)](https://doi.org/10.5281/zenodo.21753646)
 
 Ruby bindings for [minibwa](https://github.com/lh3/minibwa), a short-read
 aligner combining bwa-mem seeding with minimap2 chaining and alignment.
