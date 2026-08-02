@@ -1,0 +1,42 @@
+name: Test
+
+on: [push, pull_request, workflow_dispatch]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    name: Ruby ${{ matrix.ruby }} (${{ matrix.os }})
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        ruby: ['3.4', '4.0']
+
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: recursive
+          persist-credentials: false
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - run: bundle exec rake
+
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: recursive
+          persist-credentials: false
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '4.0'
+      - name: Build and install gem
+        run: |
+          gem build minibwa.gemspec
+          gem install ./minibwa-*.gem --install-dir "$RUNNER_TEMP/minibwa-gem" --no-document
+          GEM_HOME="$RUNNER_TEMP/minibwa-gem" GEM_PATH="$RUNNER_TEMP/minibwa-gem" ruby -rminibwa -e 'puts Minibwa::VERSION'
