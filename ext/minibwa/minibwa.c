@@ -7,6 +7,18 @@ VALUE rb_cMinibwaBuffer;
 VALUE rb_cMinibwaHit;
 VALUE rb_eMinibwaError;
 
+/*
+ * Document-module: Minibwa
+ *
+ * Ruby bindings for minibwa, a short-read aligner.
+ */
+
+/*
+ * Document-class: Minibwa::Error
+ *
+ * Raised when minibwa cannot build, load, or use an index.
+ */
+
 /* ------------------------------------------------------------------ */
 /* TypedData unwrapping helpers                                       */
 /* ------------------------------------------------------------------ */

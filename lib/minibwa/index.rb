@@ -13,14 +13,22 @@ module Minibwa
     # IMPORTANT: alias the raw C methods BEFORE redefining them.
     # Singleton methods (Index.load, etc.)
     class << self
+      # @api private
       alias _build build
+      # @api private
       alias _load load
+      # @api private
       alias _load_mmap load_mmap
+      private :_build, :_load, :_load_mmap
     end
+    private_class_method :_build, :_load, :_load_mmap
 
     # Instance methods (index.map, index.map_batch)
+    # @api private
     alias _map map
+    # @api private
     alias _map_batch map_batch
+    private :_map, :_map_batch
 
     class << self
       # Validates that the FASTA file exists and is readable before calling

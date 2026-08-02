@@ -192,7 +192,7 @@ mb_opt_initialize(int argc, VALUE *argv, VALUE self)
 
 /*
  * call-seq:
- *   preset(name) -> true or false
+ *   preset!(name) -> true or false
  *
  * Applies a named preset.  Returns +true+ on success, +false+ if the preset
  * name is unknown.  Known presets: "sr", "adap", "lr".

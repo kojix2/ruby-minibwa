@@ -1,4 +1,6 @@
 /*
+ * Document-class: Minibwa::Buffer
+ *
  * Minibwa::Buffer -- wraps mb_tbuf_t, the reusable per-thread scratch buffer.
  *
  * Passing a Buffer to Index#map saves an mb_tbuf_init/mb_tbuf_destroy pair on

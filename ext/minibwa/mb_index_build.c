@@ -94,6 +94,8 @@ rb_minibwa_index_build_body(void *ptr)
 /* ------------------------------------------------------------------ */
 
 /*
+ * Document-method: Minibwa::Index.build
+ *
  * call-seq:
  *   Index.build(fasta, prefix, sa_bit: 4, n_thread: 4, seed: 11, meth: false) -> true
  *
