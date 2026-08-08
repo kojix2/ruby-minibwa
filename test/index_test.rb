@@ -54,6 +54,7 @@ class IndexTest < Test::Unit::TestCase
   end
 
   test 'build supports long output prefixes' do
+    omit('long-path support depends on the Windows host') if Gem.win_platform?
     Dir.mktmpdir('minibwa-index-') do |dir|
       nested = dir
       9.times do |i|
