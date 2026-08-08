@@ -17,7 +17,8 @@ Gem::Specification.new do |spec|
   ].map { |name| "ext/minibwa/minibwa/#{name}.c" }
 
   spec.files = %w[README.md LICENSE.txt ext/minibwa/minibwa/LICENSE.txt] +
-               Dir.glob(['lib/**/*.rb', 'ext/minibwa/*.{c,h,rb}', 'ext/minibwa/minibwa/*.h'], base: __dir__) +
+               Dir.glob(['lib/**/*.rb', 'ext/minibwa/*.{c,h,rb}', 'ext/minibwa/compat/**/*.h',
+                         'ext/minibwa/minibwa/*.h'], base: __dir__) +
                upstream
   spec.files.delete('ext/minibwa/minibwa/QSufSort.h')
   spec.extensions = ['ext/minibwa/extconf.rb']

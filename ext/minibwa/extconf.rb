@@ -46,6 +46,14 @@ sais = %w[libsais libsais64]
 
 binding_srcs = %w[minibwa mb_options mb_index mb_index_build mb_buffer mb_hit]
 
+# Upstream uses the POSIX mmap API to load indexes. Keep the vendored sources
+# untouched and provide that small API surface locally when building with
+# MinGW, where <sys/mman.h> is not available.
+if /mingw|mswin/i.match?(RUBY_PLATFORM)
+  binding_srcs << 'win_mman'
+  $INCFLAGS << ' -I$(srcdir)/compat'
+end
+
 $srcs = binding_srcs.map { |f| "#{f}.c" } +
         (core + ksw2 + sais).map { |f| "minibwa/#{f}.c" }
 $objs = $srcs.map { |f| "#{File.basename(f, '.c')}.o" }
